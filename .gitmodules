@@ -1,0 +1,6 @@
+[submodule "github.com/imos/imosrpc"]
+	path = github.com/imos/imosrpc
+	url = https://github.com/imos/imosrpc
+[submodule "github.com/imos/imosql"]
+	path = github.com/imos/imosql
+	url = https://github.com/imos/imosql
