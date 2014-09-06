@@ -1,4 +1,4 @@
-imos-api
-========
+ImosAPI (Private Use)
+=====================
 
-[Private use] ImosAPI is an AppEngine service providing imos' APIs.
+ImosAPI is an AppEngine service providing imos' APIs.

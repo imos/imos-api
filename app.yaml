@@ -1,0 +1,11 @@
+application: imos-api
+version: 1
+runtime: go
+api_version: go1
+automatic_scaling:
+  max_idle_instances: 1
+  min_pending_latency: 1.0s
+
+handlers:
+- url: /.*
+  script: _go_app
