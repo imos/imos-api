@@ -5,7 +5,7 @@ import (
 )
 
 func init() {
-	imosrpc.RegisterHandler("config/appengine", DatabaseHandler)
+	imosrpc.RegisterHandler("config/appengine", AppEngineHandler)
 }
 
 type AppEngineRequest struct {}
