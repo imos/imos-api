@@ -15,9 +15,7 @@ func init() {
 func TestDatabase(t *testing.T) {
 	response := info.Database()
 	expectedResponse := info.DatabaseResponse{
-		DatabaseInfo: config.DatabaseInfo{
-			TargetName: "None",
-		},
+		DatabaseInfo: config.DatabaseInfo{},
 	}
 	if !reflect.DeepEqual(expectedResponse, response) {
 		t.Errorf("expected: %#v, actual: %#v.", expectedResponse, response)

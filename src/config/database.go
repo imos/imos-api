@@ -6,7 +6,6 @@ import (
 )
 
 var connection *imosql.Connection
-var targetName = "None"
 
 func init() {
 	// Connect to the SQL server first.
@@ -23,7 +22,6 @@ func connectDatabase() *imosql.Connection {
 		connection, err = imosql.Open(
 			"mysql", user+"@cloudsql(imos-api:sql)/"+user+"?timeout=5s")
 		if err == nil {
-			targetName = "Cloud SQL"
 			return connection
 		}
 	}
@@ -31,7 +29,6 @@ func connectDatabase() *imosql.Connection {
 		connection, err = imosql.Open(
 			"mysql", user+"@tcp(173.194.111.104:3306)/"+user+"?timeout=5s")
 		if err == nil {
-			targetName = "MySQL"
 			return connection
 		}
 	}
@@ -43,7 +40,7 @@ func GetDatabase() *imosql.Connection {
 }
 
 type DatabaseInfo struct {
-	TargetName   string  `json:"target_name" sql:"target_name"`
+	TargetName   *string  `json:"target_name" sql:"target_name"`
 	ConnectionId *int    `json:"connection_id" sql:"connection_id"`
 	User         *string `json:"user" sql:"user"`
 	Database     *string `json:"database" sql:"database_name"`
@@ -52,7 +49,7 @@ type DatabaseInfo struct {
 
 func GetDatabaseInfo() DatabaseInfo {
 	if connection == nil {
-		return DatabaseInfo{TargetName: "None"}
+		return DatabaseInfo{}
 	}
 	row := DatabaseInfo{}
 	if !connection.RowOrDie(&row, `
