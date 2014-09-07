@@ -1,0 +1,9 @@
+[submodule "src/github.com/imos/imosql"]
+	path = src/github.com/imos/imosql
+	url = http://github.com/imos/imosql
+[submodule "src/github.com/imos/imosrpc"]
+	path = src/github.com/imos/imosrpc
+	url = http://github.com/imos/imosrpc
+[submodule "src/github.com/go-sql-driver/mysql"]
+	path = src/github.com/go-sql-driver/mysql
+	url = http://github.com/go-sql-driver/mysql
