@@ -20,17 +20,21 @@ func GetSql() *imosql.Connection {
 		return connection
 	}
 	var err error
-	connection, err = imosql.Open(
-		"mysql", "api@cloudsql(imos-api:sql)/api?timeout=5s")
-	if err == nil {
-		targetName = "Cloud SQL"
-		return connection
+	if IsAppEngine() && IsProduction() {
+		connection, err = imosql.Open(
+			"mysql", "api@cloudsql(imos-api:sql)/api?timeout=5s")
+		if err == nil {
+			targetName = "Cloud SQL"
+			return connection
+		}
 	}
-	connection, err := imosql.Open(
-		"mysql", "api@tcp(172.17.42.1:3306)/api?timeout=5s")
-	if err == nil {
-		targetName = "MySQL"
-		return connection
+	if IsAppEngine() && !IsProduction() {
+		connection, err = imosql.Open(
+			"mysql", "api@tcp(172.17.42.1:3306)/api?timeout=5s")
+		if err == nil {
+			targetName = "MySQL"
+			return connection
+		}
 	}
 	return nil
 }
