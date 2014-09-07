@@ -1,9 +1,9 @@
-[submodule "github.com/imos/imosrpc"]
-	path = github.com/imos/imosrpc
+[submodule "src/github.com/imos/imosrpc"]
+	path = src/github.com/imos/imosrpc
 	url = https://github.com/imos/imosrpc
-[submodule "github.com/imos/imosql"]
-	path = github.com/imos/imosql
+[submodule "src/github.com/imos/imosql"]
+	path = src/github.com/imos/imosql
 	url = https://github.com/imos/imosql
-[submodule "github.com/go-sql-driver/mysql"]
-	path = github.com/go-sql-driver/mysql
+[submodule "src/github.com/go-sql-driver/mysql"]
+	path = src/github.com/go-sql-driver/mysql
 	url = https://github.com/go-sql-driver/mysql
