@@ -3,7 +3,7 @@
 package config
 
 import (
-	"appengine_internal"
+	"appengine"
 )
 
 func IsAppEngine() bool {
@@ -11,5 +11,5 @@ func IsAppEngine() bool {
 }
 
 func IsProduction() bool {
-	return !appengine_internal.IsDevAppServer()
+	return !appengine.IsDevAppServer()
 }
