@@ -7,5 +7,9 @@ automatic_scaling:
   min_pending_latency: 1.0s
 
 handlers:
+- url: /info/database
+  script: _go_app
+  login: required
+
 - url: /.*
   script: _go_app
