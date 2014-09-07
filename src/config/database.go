@@ -10,13 +10,10 @@ var targetName = "None"
 
 func init() {
 	// Connect to the SQL server first.
-	GetDatabase()
+	connection = connectDatabase()
 }
 
-func GetDatabase() *imosql.Connection {
-	if connection != nil {
-		return connection
-	}
+func connectDatabase() *imosql.Connection {
 	var err error
 	user := "api"
 	if !ShouldUseProductionDatabase() {
@@ -41,12 +38,32 @@ func GetDatabase() *imosql.Connection {
 	return nil
 }
 
+func GetDatabase() *imosql.Connection {
+	return connection
+}
+
 type DatabaseInfo struct {
-	TargetName string
+	TargetName string `json:"target_name" sql:"target_name"`
+	ConnectionId *int `json:"connection_id" sql:"connection_id"`
+	User *string `json:"user" sql:"user"`
+	Database *string `json:"database" sql:"database_name"`
+	Version *string `json:"version" sql:"version"`
 }
 
 func GetDatabaseInfo() DatabaseInfo {
-	return DatabaseInfo{
-		TargetName: targetName,
+	if connection == nil {
+		return DatabaseInfo{TargetName: "None"}
 	}
+	row := DatabaseInfo{}
+	if !connection.RowOrDie(&row, `
+		SELECT
+			"MySQL" AS target_name,
+			CONNECTION_ID() AS connection_id,
+			USER() AS user,
+			DATABASE() AS database_name,
+			VERSION() AS version
+	`) {
+		return DatabaseInfo{}
+	}
+	return row
 }
