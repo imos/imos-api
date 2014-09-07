@@ -3,7 +3,7 @@
 package config_test
 
 import (
-	"github.com/imos/imos-api/config"
+	"config"
 	"github.com/imos/imosrpc"
 	"reflect"
 	"testing"

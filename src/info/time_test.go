@@ -2,7 +2,7 @@ package infoapi_test
 
 import (
 	"github.com/imos/imosrpc"
-	"github.com/imos/infoapi"
+	"infoapi"
 	"testing"
 	"time"
 )
