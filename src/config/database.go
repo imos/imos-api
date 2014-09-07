@@ -43,11 +43,11 @@ func GetDatabase() *imosql.Connection {
 }
 
 type DatabaseInfo struct {
-	TargetName string `json:"target_name" sql:"target_name"`
-	ConnectionId *int `json:"connection_id" sql:"connection_id"`
-	User *string `json:"user" sql:"user"`
-	Database *string `json:"database" sql:"database_name"`
-	Version *string `json:"version" sql:"version"`
+	TargetName   string  `json:"target_name" sql:"target_name"`
+	ConnectionId *int    `json:"connection_id" sql:"connection_id"`
+	User         *string `json:"user" sql:"user"`
+	Database     *string `json:"database" sql:"database_name"`
+	Version      *string `json:"version" sql:"version"`
 }
 
 func GetDatabaseInfo() DatabaseInfo {
