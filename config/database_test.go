@@ -3,8 +3,8 @@ package config_test
 import (
 	"github.com/imos/imos-api/config"
 	"github.com/imos/imosrpc"
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func init() {

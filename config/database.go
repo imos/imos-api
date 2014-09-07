@@ -1,9 +1,9 @@
 package config
 
 import (
-	"github.com/imos/imosrpc"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/imos/imosql"
+	"github.com/imos/imosrpc"
 )
 
 var connection *imosql.Connection
