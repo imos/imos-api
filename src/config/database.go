@@ -3,7 +3,6 @@ package config
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/imos/imosql"
-	"github.com/imos/imosrpc"
 )
 
 var connection *imosql.Connection
@@ -11,11 +10,10 @@ var targetName = "None"
 
 func init() {
 	// Connect to the SQL server first.
-	GetSql()
-	imosrpc.RegisterHandler("config/database", DatabaseHandler)
+	GetDatabase()
 }
 
-func GetSql() *imosql.Connection {
+func GetDatabase() *imosql.Connection {
 	if connection != nil {
 		return connection
 	}
@@ -39,18 +37,12 @@ func GetSql() *imosql.Connection {
 	return nil
 }
 
-type DatabaseRequest struct{}
-type DatabaseResponse struct {
-	TargetName string `json:"target_name"`
+type DatabaseInfo struct {
+	TargetName string
 }
 
-func DatabaseHandler(request DatabaseRequest) DatabaseResponse {
-	return DatabaseResponse{TargetName: targetName}
-}
-
-func Database() DatabaseResponse {
-	request := DatabaseRequest{}
-	response := DatabaseResponse{}
-	imosrpc.Call("config/database", request, &response)
-	return response
+func GetDatabaseInfo() DatabaseInfo {
+	return DatabaseInfo{
+		TargetName: targetName,
+	}
 }
