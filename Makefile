@@ -17,6 +17,14 @@ run: build
 	     "api" --imosrpc-http=$(HTTP_PORT)
 .PHONY: build
 
+appengine: build
+	dev_appserver.py \
+	    --host 0.0.0.0 --port 8080 \
+	    --admin_host 0.0.0.0 --admin_port 8000 \
+	    --skip_sdk_update_check true \
+	    src
+.PHONY: appengine
+
 build: get
 	go build $(TARGET)
 .PHONY: build
