@@ -1,8 +1,8 @@
 package info_test
 
 import (
-	"github.com/imos/imosrpc"
 	"api/info"
+	"github.com/imos/imosrpc"
 	"testing"
 	"time"
 )

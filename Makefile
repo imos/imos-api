@@ -1,7 +1,8 @@
 export GOPATH = $(shell pwd)
 TARGET = \
 	api/info \
-	config
+	config \
+	experimental
 HTTP_PORT = :8080
 
 test: build
@@ -38,7 +39,7 @@ version:
 .PHONY: version
 
 format:
-	gofmt -w $(TARGET)
+	cd src; gofmt -w $(TARGET)
 .PHONY: format
 
 document:

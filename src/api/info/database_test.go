@@ -1,8 +1,8 @@
 package info_test
 
 import (
-	"config"
 	"api/info"
+	"config"
 	"github.com/imos/imosrpc"
 	"reflect"
 	"testing"
@@ -15,7 +15,7 @@ func init() {
 func TestDatabase(t *testing.T) {
 	response := info.Database()
 	expectedResponse := info.DatabaseResponse{
-		DatabaseInfo: config.DatabaseInfo {
+		DatabaseInfo: config.DatabaseInfo{
 			TargetName: "None",
 		},
 	}

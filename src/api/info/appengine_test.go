@@ -16,7 +16,7 @@ func init() {
 func TestAppEngine(t *testing.T) {
 	response := info.AppEngine()
 	expectedResponse := info.AppEngineResponse{
-		IsAppEngine: false,
+		IsAppEngine:  false,
 		IsProduction: false,
 	}
 	if !reflect.DeepEqual(expectedResponse, response) {
