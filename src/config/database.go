@@ -18,9 +18,13 @@ func GetDatabase() *imosql.Connection {
 		return connection
 	}
 	var err error
+	user := "api"
+	if !ShouldUseProductionDatabase() {
+		user = "api-experimental"
+	}
 	if IsAppEngine() && IsProduction() {
 		connection, err = imosql.Open(
-			"mysql", "api@cloudsql(imos-api:sql)/api?timeout=5s")
+			"mysql", user+"@cloudsql(imos-api:sql)/"+user+"?timeout=5s")
 		if err == nil {
 			targetName = "Cloud SQL"
 			return connection
@@ -28,7 +32,7 @@ func GetDatabase() *imosql.Connection {
 	}
 	if IsAppEngine() && !IsProduction() {
 		connection, err = imosql.Open(
-			"mysql", "api@tcp(172.17.42.1:3306)/api?timeout=5s")
+			"mysql", user+"@tcp(173.194.111.104:3306)/"+user+"?timeout=5s")
 		if err == nil {
 			targetName = "MySQL"
 			return connection
