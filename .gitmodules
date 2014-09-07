@@ -4,3 +4,6 @@
 [submodule "github.com/imos/imosql"]
 	path = github.com/imos/imosql
 	url = https://github.com/imos/imosql
+[submodule "github.com/go-sql-driver/mysql"]
+	path = github.com/go-sql-driver/mysql
+	url = https://github.com/go-sql-driver/mysql
