@@ -1,4 +1,4 @@
-export GOPATH = $(shell pwd | sed -e 's/\/src\/.*$$//g')
+export GOPATH = $(shell pwd | sed -e 's/^\(.*\)\/src\/.*$$/\1/g')
 export TARGET = $(shell pwd | sed -e 's/^.*\/src\///g')
 HTTP_PORT = :8080
 
