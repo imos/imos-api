@@ -1,8 +1,8 @@
-package infoapi_test
+package info_test
 
 import (
 	"github.com/imos/imosrpc"
-	"infoapi"
+	"info"
 	"testing"
 	"time"
 )
@@ -13,7 +13,7 @@ func init() {
 
 func TestTime(t *testing.T) {
 	currentTime := time.Now()
-	apiTime := infoapi.Time()
+	apiTime := info.Time()
 	if apiTime.Before(currentTime) || apiTime.After(time.Now()) {
 		t.Errorf("Time returns a wrong time: %s.", apiTime)
 	}

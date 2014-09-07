@@ -1,4 +1,4 @@
-package infoapi
+package info
 
 import (
 	"github.com/imos/imosrpc"
