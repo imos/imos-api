@@ -1,3 +1,5 @@
+// +build !appengine
+
 package config_test
 
 import (
